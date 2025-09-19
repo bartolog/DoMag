@@ -1,0 +1,33 @@
+﻿[Main]
+Version=2
+
+[ed_CodiceAzienda: TcxPropertiesStoreComponent]
+=
+SourceDPI=96
+Text="fal"
+
+[ed_DatabaseAzienda: TcxPropertiesStoreComponent]
+=
+SourceDPI=96
+Text="arc_fal"
+
+[ed_IP_Server: TcxPropertiesStoreComponent]
+=
+SourceDPI=96
+Text="127.0.0.1"
+
+[ed_PassWord: TcxPropertiesStoreComponent]
+=
+SourceDPI=96
+Text="bartolo"
+
+[ed_Port_Number: TcxPropertiesStoreComponent]
+=
+SourceDPI=96
+Text="3307"
+
+[ed_UserName: TcxPropertiesStoreComponent]
+=
+SourceDPI=96
+Text="bartolo"
+
