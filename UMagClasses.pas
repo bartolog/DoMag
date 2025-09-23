@@ -1,67 +1,54 @@
 unit UMagClasses;
 
-
-
-
-
 interface
 
-
 uses
-UDDTInterface,system.Generics.Collections;
-
+  UDDTInterface, system.Generics.Collections;
 
 type
 
-
-TMat_Prima = class (TInterfacedObject, IDDTItem)
+  TMat_Prima = class(TInterfacedObject, IDDTItem)
   private
 
-  FCode : string; // codice materia prima
-  FDescrizione : string; // descrizione del materiale
-  FQta : double; // quantità impèiegata
+    FCode: string; // codice materia prima
+    FDescrizione: string; // descrizione del materiale
+    FQta: double; // quantità impèiegata
 
+  public
 
- public
-
-    constructor Create (aCode,adescr : string; aQta : double);
-
+    constructor Create(aCode, adescr: string; aQta: double);
 
     function GetIsDescrizione: Boolean;
     Function GetCodiceArticolo: string;
     Function GetDescrizione: string;
-    function GetOrdine : string;
-    function GetPosizione  : integer;
-    Function GetQuantita: Double;
+    function GetOrdine: string;
+    function GetPosizione: integer;
+    Function GetQuantita: double;
+    function GetColli: integer;
+
+    property Colli: integer read GetColli;
 
     property IsDescrizione: Boolean read GetIsDescrizione;
     property CodiceArticolo: string read GetCodiceArticolo;
     property Descrizione: string read GetDescrizione;
-    property Quantita: Double read GetQuantita;
+    property Quantita: double read GetQuantita;
     property Ordine: string read GetOrdine;
-    property Posizione : integer read GetPosizione;
+    property Posizione: integer read GetPosizione;
 
-end;
+  end;
 
+  TMateriePrime = Tlist<IDDTItem>;
 
-TMateriePrime = Tlist<IDDTItem>;
+  TDDT_SCPR = class(TInterfacedObject, IDDTDATA)
 
-TDDT_SCPR = class(TInterfacedObject, IDDTDATA)
+  private
+    FDone: Boolean;
+    FProgressivo: integer;
+    FMateriePrime: Tlist<IDDTItem>;
 
-    private
-    FDone : Boolean;
-    FProgressivo  : integer;
-    FMateriePrime : TList<IDDTItem>;
+  public
 
-
-    public
-
-
-
-
-    constructor Create(aListMat : TMateriePrime);
-
-
+    constructor Create(aListMat: TMateriePrime);
 
     Function GetCodiceDestinatario: string; // Il codice cliente
     Function GetCodiceDestinazione: string;
@@ -69,18 +56,17 @@ TDDT_SCPR = class(TInterfacedObject, IDDTDATA)
     Function GetCodiceVettore: string; // il codice spedizione (vettore)
     Function GetColli: double; // il numero delle confezioni
     Function GetNote: string; // eventuali note
-    Function GetAnnoEsercizio : string; // anno esercizio
-    function GetTotaleRigheDDT : integer;
-    procedure SetDone (aValue : Boolean);
-    procedure SetResult(aValue : variant);
-    function GetPalletsNumber : string;
-    function GetScadenze : string;
-    function GetTipoDoc : string;
+    Function GetAnnoEsercizio: string; // anno esercizio
+    function GetTotaleRigheDDT: integer;
+    procedure SetDone(aValue: Boolean);
+    procedure SetResult(aValue: variant);
+    function GetPalletsNumber: string;
+    function GetScadenze: string;
+    function GetTipoDoc: string;
 
     // righe descrizione da aggiungere in fondo
-    function GetDescrizionePiede : Tarray<string>;
-    function GetDescrizioneTesta : Tarray<string>;
-
+    function GetDescrizionePiede: Tarray<string>;
+    function GetDescrizioneTesta: Tarray<string>;
 
     property CodiceDestinatario: string read GetCodiceDestinatario;
 
@@ -88,152 +74,150 @@ TDDT_SCPR = class(TInterfacedObject, IDDTDATA)
     property CodiceVettore: string read GetCodiceVettore;
     property Colli: double read GetColli;
     property Note: string read GetNote;
-    property AnnoEsercizio : string read GetAnnoEsercizio;
-    property Totalerigheddt: integer read GetTotalerigheddt ;
+    property AnnoEsercizio: string read GetAnnoEsercizio;
+    property Totalerigheddt: integer read GetTotaleRigheDDT;
 
+    function GetDetailDDt: Tlist<IDDTItem>;
 
-    function GetDetailDDt: TList<IDDTItem>;
-
-
-
-
-end;
-
-
-
+  end;
 
 implementation
 
 { TDDT_SCPR }
 
 uses
-System.SysUtils;
+  system.SysUtils;
 
 constructor TDDT_SCPR.Create(aListMat: TMateriePrime);
 begin
-    FMateriePrime := aListMat
+  FMateriePrime := aListMat
 end;
 
 function TDDT_SCPR.GetAnnoEsercizio: string;
 var
- y,m,d : word;
+  y, m, d: word;
 begin
 
-  DecodeDate(now, y,m,d);
+  DecodeDate(now, y, m, d);
   result := y.ToString
 
 end;
 
 function TDDT_SCPR.GetCodiceDestinatario: string;
 begin
-     result := 'PRODUZIO'
+  result := 'PRODUZIO'
 end;
 
 function TDDT_SCPR.GetCodiceDestinazione: string;
 begin
-    result := ''
+  result := ''
 end;
 
 function TDDT_SCPR.GetCodiceVettore: string;
 begin
-    result := 'MITT'
+  result := 'MITT'
 end;
 
 function TDDT_SCPR.GetColli: double;
 begin
-   result := FMateriePrime.Count
+  result := FMateriePrime.Count
 end;
 
 function TDDT_SCPR.GetDescrizionePiede: Tarray<string>;
 begin
-   result := []
+  result := []
 end;
 
 function TDDT_SCPR.GetDescrizioneTesta: Tarray<string>;
 begin
-    result := []
+  result := []
 end;
 
-function TDDT_SCPR.GetDetailDDt: TList<IDDTItem>;
+function TDDT_SCPR.GetDetailDDt: Tlist<IDDTItem>;
 begin
-    result :=  FMateriePrime
+  result := FMateriePrime
 end;
 
 function TDDT_SCPR.GetNote: string;
 begin
-     result := ''
+  result := ''
 end;
 
 function TDDT_SCPR.GetPalletsNumber: string;
 begin
-     result := ''
+  result := ''
 end;
 
 function TDDT_SCPR.GetScadenze: string;
 begin
-    result := ''
+  result := ''
 end;
 
 function TDDT_SCPR.GetTipoDoc: string;
 begin
-    result := 'SCPR'
+  result := 'SCPR'
 end;
 
 function TDDT_SCPR.GetTotaleRigheDDT: integer;
 begin
-     result := FMateriePrime.Count
+  result := FMateriePrime.Count
 end;
 
 procedure TDDT_SCPR.SetDone(aValue: Boolean);
 begin
-   fdone := aValue
+  FDone := aValue
 end;
 
 procedure TDDT_SCPR.SetResult(aValue: variant);
 begin
-     FProgressivo := avalue
+  FProgressivo := aValue
 end;
 
 { TMat_Prima }
 
 constructor TMat_Prima.Create(aCode, adescr: string; aQta: double);
 begin
-inherited create;
+  inherited Create;
 
-FCode := aCode;
-FDescrizione := adescr;
-FQta := aQta
+  FCode := aCode;
+  FDescrizione := adescr;
+  FQta := aQta
 
 end;
 
 function TMat_Prima.GetCodiceArticolo: string;
 begin
-     result := FCode
+  result := FCode
+end;
+
+function TMat_Prima.GetColli: integer;
+begin
+  result := 1
 end;
 
 function TMat_Prima.GetDescrizione: string;
 begin
-     result := FDescrizione
+  result := FDescrizione
 end;
 
 function TMat_Prima.GetIsDescrizione: Boolean;
 begin
- result := false
+  result := false
 end;
 
 function TMat_Prima.GetOrdine: string;
 begin
-    result := ''
+  result := ''
 end;
 
 function TMat_Prima.GetPosizione: integer;
 begin
-    result := -1
+  result := -1
 end;
 
-function TMat_Prima.GetQuantita: Double;
+function TMat_Prima.GetQuantita: double;
 begin
-     result :=  FQta
+  result := FQta
 end;
 
 end.

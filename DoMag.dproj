@@ -106,6 +106,10 @@
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
         <VerInfo_Locale>1033</VerInfo_Locale>
         <DCC_Define>madExcept;LeakChecking;$(DCC_Define)</DCC_Define>
+        <DCC_MapFile>3</DCC_MapFile>
+        <Icon_MainIcon>DoMag_Icon.ico</Icon_MainIcon>
+        <UWP_DelphiLogo44>scarico_magazzino_modern_256.png</UWP_DelphiLogo44>
+        <UWP_DelphiLogo150>scarico_magazzino_modern_256.png</UWP_DelphiLogo150>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1_Win64)'!=''">
         <AppDPIAwarenessMode>PerMonitorV2</AppDPIAwarenessMode>
@@ -141,6 +145,17 @@
         </DCCReference>
         <DCCReference Include="..\DDTPallets2\UDDTInterface.pas"/>
         <DCCReference Include="UMagClasses.pas"/>
+        <DCCReference Include="UGridFrame.pas">
+            <Form>GridFrame</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TFrame</DesignClass>
+        </DCCReference>
+        <DCCReference Include="UDbProductionContainer.pas">
+            <Form>dbProductionContainer</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="UProductionClasses.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>
@@ -170,6 +185,13 @@
                 <DeployFile LocalName="Win32\Debug\DoMag.exe" Configuration="Debug" Class="ProjectOutput">
                     <Platform Name="Win32">
                         <RemoteName>DoMag.exe</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="scarico_magazzino_modern_256.png" Configuration="Debug" Class="UWP_DelphiLogo44">
+                    <Platform Name="Win32">
+                        <RemoteDir>Assets\</RemoteDir>
+                        <RemoteName>Logo44x44.png</RemoteName>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
