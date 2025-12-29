@@ -9,7 +9,7 @@ uses
   cxLookAndFeels, cxLookAndFeelPainters, dxCore, dxRibbonSkins,
   dxRibbonCustomizationForm, dxBar, cxClasses, dxRibbon, System.Actions,
   Vcl.ActnList, System.ImageList, Vcl.ImgList, cxImageList, Vcl.ExtCtrls,
-  dxStatusBar, UGridFrame;
+  dxStatusBar, UGridFrame, TMSLogging;
 
 type
   TfrmMain = class(TForm)
@@ -36,6 +36,8 @@ type
     Panel1: TPanel;
     umgListStatusBar: TcxImageList;
     dxBarComboMacchine: TdxBarCombo;
+    actRefresh: TAction;
+    dxBarLargeButton3: TdxBarLargeButton;
     procedure ShowDBParamsClick(Sender: TObject);
     procedure actSaveExecute(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -47,11 +49,13 @@ type
       const R: TRect; var AText: string);
     procedure dxBarComboSettimaneChange(Sender: TObject);
     procedure actMakeDownloadDocUpdate(Sender: TObject);
+    procedure actRefreshExecute(Sender: TObject);
     procedure dxBarComboMacchineDestroy(Sender: TObject);
   private
     { Private declarations }
     FDataGrid: TGridFrame;
     procedure LoadMachinesList;
+    procedure LoadPrograms;
     procedure ShowMessage(const aCaption, aTitle, AText: string;
       aMainIcon: TTaskDialogIcon = tdiInformation);
   public
@@ -78,39 +82,73 @@ var
   lDDt: IDDTDATA;
   lDDTMat: TList<IDDTItem>;
   i: integer;
-
+  q: Double;
+  um: string;
 begin
 
   lDDTMat := TList<IDDTItem>.Create;
+  try
 
-  i := 0;
-  with dbProductionContainer.vqTotals do
-  begin
-
-    open;
-
-    while not eof do
+    i := 0;
+    with dbProductionContainer.vqTotals do
     begin
-      lDDTMat.Add(TMat_Prima.Create(Fields[0].AsString, Fields[1].AsString,
-        Fields[2].AsFloat));
 
-      inc(i);
-      next
+      open;
+
+      while not eof do
+      begin
+        // prende l'unità di misura  ... dal codice utilizzato
+        um := GestGoContainer.GetUMArt(Fields[0].AsString);
+        if um = 'MC' then
+          q := Fields[3].AsFloat;
+        if um = 'MQ' then
+          q := Fields[2].AsFloat;
+
+        lDDTMat.Add(TMat_Prima.Create(       Fields[2].AsString,
+          Fields[3].AsString, q,Fields[0].AsInteger,   Fields[1].AsDateTime));
+
+        inc(i);
+        next
+      end;
+      close;
     end;
-    close;
+
+    lDDt := TDDT_SCPR.Create(lDDTMat);
+
+    GestGoContainer.RegistraDDT(lDDt);
+
+    // qui posso registrare i riferimenti gestionale "GO" -> riga rapportino
+
+    for i := 0 to  lDDTMat.Count - 1 do
+    begin
+
+
+      tmslogger.info( format('data : %s   macchina id : %d   cordinate Go :  %d - > %d',
+      [datetostr(TMat_Prima(lddtmat[i]).DataScheda), TMat_Prima(lddtmat[i]).IdMacchina,  TMat_Prima(lddtmat[i]).GO_progressivo, TMat_Prima(lddtmat[i]).GO_Riga]));
+
+    end;
+
+    // qui io dovrei avere nella lista delle interfaccia dettaglio ddt
+    // i riferimenti delle righe
+
+
+    ShowMessage('doMag', 'Scarico materia prima',
+      format('Sono stati scaricati %d articoli ', [lDDTMat.Count]))
+
+  finally
+    lDDTMat.Free
   end;
 
-  lDDt := TDDT_SCPR.Create(lDDTMat);
-
-  GestGoContainer.RegistraDDT(lDDt);
-
-  ShowMessage('doMag', 'Scarico materia prima',
-    format('Sono stati scaricati %d articoli ', [i]))
 end;
 
 procedure TfrmMain.actMakeDownloadDocUpdate(Sender: TObject);
 begin
   (Sender as TAction).Enabled := FDataGrid.AreThereSelectedRows
+end;
+
+procedure TfrmMain.actRefreshExecute(Sender: TObject);
+begin
+     dxBarComboSettimaneChange(dxBarComboSettimane);
 end;
 
 procedure TfrmMain.actSaveExecute(Sender: TObject);
@@ -137,18 +175,21 @@ begin
   begin
     UniQuery1.close;
     try
-    UniQuery1.Macros[0].Value := QuotedStr(dxBarComboSettimane.Text + '%');
-    UniQuery1.Params[0].AsInteger :=
-      Tmacchina(dxBarComboMacchine.Items.Objects
-      [dxBarComboMacchine.ItemIndex]).FId;
+      var
+      p := dxBarComboSettimane.Text;
+
+      UniQuery1.Macros[0].Value := QuotedStr(p + '%');
+      UniQuery1.Params[0].AsInteger :=
+        Tmacchina(dxBarComboMacchine.Items.Objects
+        [dxBarComboMacchine.ItemIndex]).FId;
       UniQuery1.open;
       FDataGrid.SetDataSource(UniDataSource1, true);
       FDataGrid.ApplyBestFit;
 
     except
-      on e: EStringListError do
-        ShowMessage('Errore', 'Selezione materiale rapportini',
-          'Per favore seleziona macchina e programma', tdiError)
+      // on e: EStringListError do
+      // ShowMessage('Errore', 'Selezione materiale rapportini',
+      // 'Per favore seleziona macchina e programma', tdiError)
 
     end;
   end;
@@ -187,6 +228,7 @@ begin
   if FileExists('mysettings.ini') then
     dxRibbon1.BarManager.loadfromIniFile('mysettings.ini');
 
+  LoadPrograms;
   LoadMachinesList;
 
 end;
@@ -197,6 +239,17 @@ begin
   FDataGrid := TGridFrame.Create(self);
   FDataGrid.Parent := Panel1;
   FDataGrid.Align := alClient;
+
+end;
+
+procedure TfrmMain.LoadPrograms;
+begin
+  with dbProductionContainer do
+  begin
+    var
+    a := GetPrograms;
+    dxBarComboSettimane.Items.AddStrings(a)
+  end;
 
 end;
 

@@ -15,12 +15,16 @@ type
     UniDataSource1: TUniDataSource;
     UniSQLMonitor1: TUniSQLMonitor;
     vqTotals: TVirtualQuery;
+    cmdSetCoordinateGO: TUniSQL;
+    procedure DataModuleDestroy(Sender: TObject);
+    procedure DataModuleCreate(Sender: TObject);
   private
     { Private declarations }
   public
     { Public declarations }
     function SetConnection: Boolean;
     function GetListOfMachines: TMacchine;
+    function GetPrograms: TArray<string>;
   end;
 
 var
@@ -30,6 +34,17 @@ implementation
 
 {%CLASSGROUP 'Vcl.Controls.TControl'}
 {$R *.dfm}
+
+procedure TdbProductionContainer.DataModuleDestroy(Sender: TObject);
+begin
+    UniConnection1.Disconnect
+end;
+
+procedure TdbProductionContainer.DataModuleCreate(Sender: TObject);
+begin
+    UniConnection1.Connect
+end;
+
 { TdbProductionContainer }
 
 function TdbProductionContainer.GetListOfMachines: TMacchine;
@@ -57,6 +72,40 @@ begin
       q.Next
     end;
     q.Close;
+  finally
+    q.Free
+  end;
+
+end;
+
+function TdbProductionContainer.GetPrograms: TArray<string>;
+var
+  q: TUniQuery;
+  y, m, d: word;
+begin
+
+  DecodeDate(Now, y, m, d);
+  q := TUniQuery.Create(nil);
+  try
+    q.Connection := UniConnection1;
+    q.SQL.Add('SELECT DISTINCT ANNO, CAST(NUMERO_SETTIMANA AS UNSIGNED) FROM commesse');
+    q.SQL.Add(format('WHERE CAST(anno AS UNSIGNED) in (%d,%d,%d) AND CAST(Numero_Settimana AS UNSIGNED) <= 52', [y-1,y,y+1]));
+    q.SQL.Add('ORDER BY CAST(anno AS UNSIGNED) DESC, CAST(NUMERO_SETTIMANA AS UNSIGNED) DESC') ;
+
+    q.Open;
+    SetLength(result, q.RecordCount);
+
+    var
+    i := 0;
+
+    while not q.Eof do
+    begin
+      result[i] := format('%s/%s', [q.Fields[1].AsString, q.Fields[0].AsString]);
+      inc(i);
+      q.Next
+    end;
+    q.Close
+
   finally
     q.Free
   end;

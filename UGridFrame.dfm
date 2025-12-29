@@ -13,9 +13,7 @@ object GridFrame: TGridFrame
     TabOrder = 0
     LookAndFeel.NativeStyle = False
     LookAndFeel.SkinName = 'Office2019DarkGray'
-    ExplicitTop = -3
     object tvMainDV: TcxGridDBTableView
-      OptionsView.GroupByBox = False
       OptionsView.GroupSummaryLayout = gslAlignWithColumns
       OptionsView.Indicator = True
       Styles.StyleSheet = cxGridTableViewStyleSheet1

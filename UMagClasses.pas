@@ -13,10 +13,17 @@ type
     FCode: string; // codice materia prima
     FDescrizione: string; // descrizione del materiale
     FQta: double; // quantità impèiegata
+    FGo_Riga : word;
+    FGO_progressivo : Cardinal;
+    FID_scheda : integer;
+    FRiga_scheda : integer;
+    FIdMacchina : integer;
+    FDataScheda : Tdate;
 
   public
 
-    constructor Create(aCode, adescr: string; aQta: double);
+    constructor Create(aCode, adescr: string; aQta: double; aIdMacchina: Integer;
+        aDataScheda: Tdate);
 
     function GetIsDescrizione: Boolean;
     Function GetCodiceArticolo: string;
@@ -26,6 +33,13 @@ type
     Function GetQuantita: double;
     function GetColli: integer;
 
+
+    function GetCoordinateGestionale : TCoordinateGestionale;
+
+    procedure SetProgressivoRiga(aProg : Cardinal; aRiga : Word);
+
+    function GetCoordinateOrigine : TCoordinateGestionale;
+
     property Colli: integer read GetColli;
 
     property IsDescrizione: Boolean read GetIsDescrizione;
@@ -34,6 +48,15 @@ type
     property Quantita: double read GetQuantita;
     property Ordine: string read GetOrdine;
     property Posizione: integer read GetPosizione;
+
+    property GO_Riga: word read FGO_Riga write FGO_Riga;
+    property GO_progressivo: cardinal read FGO_progressivo write FGO_progressivo;
+
+
+    property IdMacchina : integer read FIdMacchina  ;
+    property DataScheda : TDate read FDataScheda  ;
+
+
 
   end;
 
@@ -175,13 +198,16 @@ end;
 
 { TMat_Prima }
 
-constructor TMat_Prima.Create(aCode, adescr: string; aQta: double);
+constructor TMat_Prima.Create(aCode, adescr: string; aQta: double; aIdMacchina:
+    Integer; aDataScheda: Tdate);
 begin
   inherited Create;
 
   FCode := aCode;
   FDescrizione := adescr;
-  FQta := aQta
+  FQta := aQta ;
+  FDataScheda := aDataScheda;
+  FIdMacchina := aIdMacchina;
 
 end;
 
@@ -193,6 +219,16 @@ end;
 function TMat_Prima.GetColli: integer;
 begin
   result := 1
+end;
+
+function TMat_Prima.GetCoordinateGestionale: TCoordinateGestionale;
+begin
+     result := [FGO_progressivo, FGo_Riga];
+end;
+
+function TMat_Prima.GetCoordinateOrigine: TCoordinateGestionale;
+begin
+      result := [FID_scheda, FRiga_scheda];
 end;
 
 function TMat_Prima.GetDescrizione: string;
@@ -218,6 +254,12 @@ end;
 function TMat_Prima.GetQuantita: double;
 begin
   result := FQta
+end;
+
+procedure TMat_Prima.SetProgressivoRiga(aProg: Cardinal; aRiga: Word);
+begin
+       FGO_progressivo := aProg;
+       FGo_Riga := aRiga;
 end;
 
 end.

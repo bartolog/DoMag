@@ -1,11 +1,21 @@
 program DoMag;
 
 uses
-  madExcept,
-  madLinkDisAsm,
-  madListHardware,
-  madListProcesses,
-  madListModules,
+  {$IFDEF EurekaLog}
+  EMemLeaks,
+  EResLeaks,
+  EResourceStrings,
+  EDebugJCL,
+  EDebugExports,
+  EFixSafeCallException,
+  EMapWin32,
+  EAppVCL,
+  EDialogWinAPIMSClassic,
+  EDialogWinAPIEurekaLogDetailed,
+  EDialogWinAPIStepsToReproduce,
+  ExceptionLog7,
+  {$ENDIF EurekaLog}
+
   Vcl.Forms,
   UMain in 'UMain.pas' {frmMain},
   UGestGoContainer in '..\DDTPallets2\UGestGoContainer.pas' {GestGoContainer: TDataModule},
@@ -27,3 +37,4 @@ begin
   Application.CreateForm(TGestGoContainer, GestGoContainer);
   Application.Run;
 end.
+

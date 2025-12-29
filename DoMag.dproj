@@ -71,6 +71,10 @@
         <UWP_DelphiLogo44>$(BDS)\bin\Artwork\Windows\UWP\delphi_UwpDefault_44.png</UWP_DelphiLogo44>
         <UWP_DelphiLogo150>$(BDS)\bin\Artwork\Windows\UWP\delphi_UwpDefault_150.png</UWP_DelphiLogo150>
         <SanitizedProjectName>DoMag</SanitizedProjectName>
+        <Defines>EUREKALOG_VER7;$(Defines)</Defines>
+        <DCC_Define>EUREKALOG_VER7;$(DCC_Define)</DCC_Define>
+        <DCC_MapFile>3</DCC_MapFile>
+        <DCC_GenerateStackFrames>true</DCC_GenerateStackFrames>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Base_Win32)'!=''">
         <DCC_UsePackage>FMXTMSFNCUIPackPkg;dxPScxExtCommonRS29;dxRichEditControlCoreRS29;vclie;bindengine;IndyIPCommon;aurelius;FMX_FlexCel_Components;cxVerticalGridRS29;dbxcds;vcledge;frLanguageSlovak29;FlexCel_Pdf;dxPSDBTeeChartRS29;cxSchedulerWebServiceStorageRS29;dxRichEditControlRS29;dxPsPrVwAdvRS29;dxPSdxGaugeControlLnkRS29;TMSScripter_IDE;frLanguageArabic29;dxRibbonCustomizationFormRS29;dbexpress;frLanguageCatalon29;dxEMFRS29;frLanguageCzech29;inet;vcltouch;uniGUI29VCL;FMX_FlexCel_Core;dxPSdxFCLnkRS29;dxSpreadSheetCoreConditionalFormattingDialogsRS29;VCL_FlexCel_Core;tmsbcl;CustomIPTransport;frLanguageItalian29;frxPDF29;madExcept_;dxPScxTLLnkRS29;frxe29;fsDB29;vclFireDAC;dxSpreadSheetRS29;frLanguageDanish29;dxPScxVGridLnkRS29;frxTee29;rtl;frLanguageLithuanian29;dxServerModeRS29;DBXSqliteDriver;dxBarDBNavRS29;frLanguageRussian29;inetdbxpress;FireDAC;VCLTMSFNCUIPackPkg;xmlrtl;ibxpress;dsnap;frLanguageSerbian29;dxPSdxLCLnkRS29;FMXTMSFNCWebSocketPkg;vclib;SVGIconImageList;frControlsLibrary29;frxQueryBuilder29;dxPSLnksRS29;frxIntIOIndy29;fqbADO29;dxPSdxOCLnkRS29;cxSchedulerGridRS29;TMSLogging;sparkle;dxPSdxDBTVLnkRS29;frLocalizationLibrary29;sphinx;dxGaugeControlRS29;bindcompvclwinx;dxOrgChartAdvancedCustomizeFormRS29;bindcompfmx;TMSVCLUIPackPkgExDXE15;madBasic_;frLanguageGerman29;dxFlowChartLayoutsRS29;dxdborRS29;ibmonitor;frLanguageIndonesian29;Tee;SVGIconImageListFMX;dxPScxGridLnkRS29;vclactnband;TMSVCLUIPackPkgXlsDXE15;TMSScripter;dxRichEditCoreRS29;DBXMySQLDriver;dxFlowChartAdvancedCustomizeFormRS29;fsADO29;VclSmp;EurekaLogCore;dxPSTeeChartRS29;fmxase;dxFlowChartRS29;TMSVCLUIPackPkgWizDXE15;VCLTMSFNCWXPackPkg;FlexCel_XlsAdapter;frxcs29;cxGridRS29;dxSpellCheckerRS29;frLanguageSlovene29;frADODataLibrary29;dxMapControlRS29;vcldsnap;DBXInterBaseDriver;frLanguageBrazil129;vcldb;cxSchedulerTreeBrowserRS29;dacfmx290;dxTabbedMDIRS29;inetstn;frxIntIO29;fsIBX29;dxHttpIndyRequestRS29;frLanguageJapanese29;cxPivotGridOLAPRS29;RaizeComponentsVclDb;vcl;TMSScripter_Legacy;dxCoreRS29;SMImportD12;fsFD29;dxSkinsCoreRS29;frLanguageDutch29;FireDACPgDriver;fqbSM29;tethering;frLanguageBulgarian29;bindcompvcl;CloudService;frGraphicsLibrary29;unidac290;cxSchedulerRS29;soapserver;FireDACIBDriver;dxPScxCommonRS29;RaizeComponentsVcl;dxRibbonRS29;vclwinx;fs29;fmx;dxSpreadSheetReportDesignerRS29;DbxCommonDriver;VCLRESTComponents;FireDACCommonODBC;dxComnRS29;VCLTMSFNCDashboardPackPkg;FrameStandPackage_11_1;fsTee29;dxFlowChartDesignerRS29;appanalytics;IndyProtocols;vclx;Skia.Package.RTL;frxADOQueryBuilder29;dxBarExtDBItemsRS29;VCLTMSFNCWebSocketPkg;FmxTeeUI;cxFireDACAdaptersRS29;frLanguageHungarian29;frxIBXQueryBuilder29;SMExportD12;AcamViewer;dacvcl290;FireDACSqliteDriver;DbxClientDriver;soapmidas;TeeUI;frCoreLibrary29;frxFDQueryBuilder29;frLanguageBrazil29;dxDockingRS29;vquery290;dxorgcRS29;fmxdae;dxPSRichEditControlLnkRS29;dxPSdxSpreadSheetLnkRS29;frxIBX29;fqbFD29;cxADOAdaptersRS29;frLanguageSwiss29;dxPSPrVwRibbonRS29;IndySystem;frLanguageSwedish29;dxPSdxDBOCLnkRS29;dxGDIPlusRS29;ibxbindings;TMSFNCCorePkg;frLanguageUkrainian29;madDisAsm_;dxPSCoreRS29;FlexCel_Render;FireDACCommon;dxPSdxMapControlLnkRS29;cxGridEMFRS29;dxGanttControlRS29;dxPScxPivotGridLnkRS29;dxADOServerModeRS29;dxWizardControlRS29;TMSScripter_VCL;bindcompdbx;FireDACMySQLDriver;dxCloudServiceLibraryRS29;fqb29;cxIBXAdaptersRS29;VCL_FlexCel_Components;remotedb;frLanguageFrench29;TMSVCLUIPackPkgDXE15;dxSpreadSheetCoreRS29;dxNavBarRS29;frxSM29;vclimg;unidacfmx290;dxFireDACEMFRS29;xdata;frFDDataLibrary29;frLanguageFarsi29;fmxobj;bindcompvclsmp;frx29;SingleInstance;frLanguageChinese29;frLanguageHebrew29;FMXTMSFNCCorePkg;dxmdsRS29;TMSScripter_Memo;dxPScxSchedulerLnkRS29;TMSWEBCorePkgLib;dxADOEMFRS29;dxChartControlRS29;frxDB29;fqbDBX29;FireDACCommonDriver;IndyIPClient;frxHTML29;dxPDFViewerRS29;frLanguageTaiwan29;dxBarExtItemsRS29;frxDBXQueryBuilder29;uSynEdit_R2025;frLanguageRomanian29;crcontrols290;inetdb;TMSWEBCorePkg;frLanguageBrazil229;cxPivotGridChartRS29;FMXTMSFNCWXPackPkg;fmxFireDAC;cxTreeListdxBarPopupMenuRS29;frLanguageCroatian29;cxSchedulerRibbonStyleEventEditorRS29;dxtrmdRS29;dbrtl;uniGUI29m;dxPScxPCProdRS29;Skia.Package.FMX;TeeDB;FireDACMSAccDriver;dxRichEditDocumentModelRS29;frLanguageTurkish29;frLanguageGreek29;cxLibraryRS29;Skia.Package.VCL;FlexCel_Core;dxPSdxPDFViewerLnkRS29;FMXTMSFNCDashboardPackPkg;unidacvcl290;bindcomp;cxExportRS29;frLanguageLatvian29;IndyCore;RESTBackendComponents;frLanguageSpanish29;dxTileControlRS29;dxFireDACServerModeRS29;frSmartMemo29;FireDACADSDriver;fqbIBX29;RESTComponents;frxFD29;IndyIPServer;dsnapxml;adortl;dxdbtrRS29;dsnapcon;cxPivotGridRS29;frxADO29;dac290;dxBarRS29;frLanguagePortuguese29;frLanguagePolish29;frxDBX29;VCLTMSFNCCorePkg;dxSpreadSheetConditionalFormattingDialogsRS29;cxTreeListRS29;FMXTee;soaprtl;dxDBXServerModeRS29;dxPSdxChartControlLnkRS29;$(DCC_UsePackage)</DCC_UsePackage>
@@ -80,6 +84,8 @@
         <VerInfo_Keys>CompanyName=;FileDescription=$(MSBuildProjectName);FileVersion=1.0.0.0;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProgramID=com.embarcadero.$(MSBuildProjectName);ProductName=$(MSBuildProjectName);ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>
         <VerInfo_Locale>1033</VerInfo_Locale>
         <Manifest_File>$(BDS)\bin\default_app.manifest</Manifest_File>
+        <Defines>EUREKALOG;$(Defines)</Defines>
+        <DCC_Define>EUREKALOG;$(DCC_Define)</DCC_Define>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Base_Win64)'!=''">
         <DCC_UsePackage>FMXTMSFNCUIPackPkg;dxPScxExtCommonRS29;dxRichEditControlCoreRS29;vclie;bindengine;IndyIPCommon;aurelius;FMX_FlexCel_Components;cxVerticalGridRS29;dbxcds;vcledge;frLanguageSlovak29;FlexCel_Pdf;dxPSDBTeeChartRS29;cxSchedulerWebServiceStorageRS29;dxRichEditControlRS29;dxPsPrVwAdvRS29;dxPSdxGaugeControlLnkRS29;TMSScripter_IDE;frLanguageArabic29;dxRibbonCustomizationFormRS29;dbexpress;frLanguageCatalon29;dxEMFRS29;frLanguageCzech29;inet;vcltouch;uniGUI29VCL;FMX_FlexCel_Core;dxPSdxFCLnkRS29;dxSpreadSheetCoreConditionalFormattingDialogsRS29;VCL_FlexCel_Core;tmsbcl;CustomIPTransport;frLanguageItalian29;dxPScxTLLnkRS29;vclFireDAC;dxSpreadSheetRS29;frLanguageDanish29;dxPScxVGridLnkRS29;rtl;frLanguageLithuanian29;dxServerModeRS29;DBXSqliteDriver;dxBarDBNavRS29;frLanguageRussian29;inetdbxpress;FireDAC;VCLTMSFNCUIPackPkg;xmlrtl;ibxpress;dsnap;frLanguageSerbian29;dxPSdxLCLnkRS29;FMXTMSFNCWebSocketPkg;vclib;SVGIconImageList;dxPSLnksRS29;dxPSdxOCLnkRS29;cxSchedulerGridRS29;TMSLogging;sparkle;dxPSdxDBTVLnkRS29;sphinx;dxGaugeControlRS29;bindcompvclwinx;dxOrgChartAdvancedCustomizeFormRS29;bindcompfmx;TMSVCLUIPackPkgExDXE15;frLanguageGerman29;dxFlowChartLayoutsRS29;dxdborRS29;ibmonitor;frLanguageIndonesian29;Tee;SVGIconImageListFMX;dxPScxGridLnkRS29;vclactnband;TMSVCLUIPackPkgXlsDXE15;TMSScripter;dxRichEditCoreRS29;DBXMySQLDriver;dxFlowChartAdvancedCustomizeFormRS29;VclSmp;dxPSTeeChartRS29;fmxase;dxFlowChartRS29;VCLTMSFNCWXPackPkg;FlexCel_XlsAdapter;cxGridRS29;dxSpellCheckerRS29;frLanguageSlovene29;dxMapControlRS29;vcldsnap;DBXInterBaseDriver;frLanguageBrazil129;vcldb;cxSchedulerTreeBrowserRS29;dxTabbedMDIRS29;inetstn;dxHttpIndyRequestRS29;frLanguageJapanese29;cxPivotGridOLAPRS29;RaizeComponentsVclDb;vcl;TMSScripter_Legacy;dxCoreRS29;dxSkinsCoreRS29;frLanguageDutch29;FireDACPgDriver;tethering;frLanguageBulgarian29;bindcompvcl;CloudService;cxSchedulerRS29;soapserver;FireDACIBDriver;dxPScxCommonRS29;RaizeComponentsVcl;dxRibbonRS29;vclwinx;fmx;dxSpreadSheetReportDesignerRS29;DbxCommonDriver;VCLRESTComponents;FireDACCommonODBC;dxComnRS29;VCLTMSFNCDashboardPackPkg;FrameStandPackage_11_1;dxFlowChartDesignerRS29;appanalytics;IndyProtocols;vclx;frxADOQueryBuilder29;dxBarExtDBItemsRS29;VCLTMSFNCWebSocketPkg;FmxTeeUI;cxFireDACAdaptersRS29;frLanguageHungarian29;frxIBXQueryBuilder29;FireDACSqliteDriver;DbxClientDriver;soapmidas;TeeUI;frxFDQueryBuilder29;frLanguageBrazil29;dxDockingRS29;dxorgcRS29;fmxdae;dxPSRichEditControlLnkRS29;dxPSdxSpreadSheetLnkRS29;cxADOAdaptersRS29;frLanguageSwiss29;dxPSPrVwRibbonRS29;IndySystem;frLanguageSwedish29;dxPSdxDBOCLnkRS29;dxGDIPlusRS29;ibxbindings;TMSFNCCorePkg;frLanguageUkrainian29;dxPSCoreRS29;FlexCel_Render;FireDACCommon;dxPSdxMapControlLnkRS29;cxGridEMFRS29;dxGanttControlRS29;dxPScxPivotGridLnkRS29;dxADOServerModeRS29;dxWizardControlRS29;TMSScripter_VCL;bindcompdbx;FireDACMySQLDriver;dxCloudServiceLibraryRS29;cxIBXAdaptersRS29;VCL_FlexCel_Components;remotedb;frLanguageFrench29;TMSVCLUIPackPkgDXE15;dxSpreadSheetCoreRS29;dxNavBarRS29;vclimg;dxFireDACEMFRS29;xdata;frLanguageFarsi29;fmxobj;bindcompvclsmp;frLanguageChinese29;frLanguageHebrew29;FMXTMSFNCCorePkg;dxmdsRS29;TMSScripter_Memo;dxPScxSchedulerLnkRS29;TMSWEBCorePkgLib;dxADOEMFRS29;dxChartControlRS29;FireDACCommonDriver;IndyIPClient;dxPDFViewerRS29;frLanguageTaiwan29;dxBarExtItemsRS29;frxDBXQueryBuilder29;uSynEdit_R2025;frLanguageRomanian29;inetdb;TMSWEBCorePkg;frLanguageBrazil229;cxPivotGridChartRS29;FMXTMSFNCWXPackPkg;fmxFireDAC;cxTreeListdxBarPopupMenuRS29;frLanguageCroatian29;cxSchedulerRibbonStyleEventEditorRS29;dxtrmdRS29;dbrtl;uniGUI29m;dxPScxPCProdRS29;TeeDB;FireDACMSAccDriver;dxRichEditDocumentModelRS29;frLanguageTurkish29;frLanguageGreek29;cxLibraryRS29;Skia.Package.VCL;FlexCel_Core;dxPSdxPDFViewerLnkRS29;FMXTMSFNCDashboardPackPkg;bindcomp;cxExportRS29;frLanguageLatvian29;IndyCore;RESTBackendComponents;frLanguageSpanish29;dxTileControlRS29;dxFireDACServerModeRS29;FireDACADSDriver;RESTComponents;IndyIPServer;dsnapxml;adortl;dxdbtrRS29;dsnapcon;cxPivotGridRS29;dxBarRS29;frLanguagePortuguese29;frLanguagePolish29;VCLTMSFNCCorePkg;dxSpreadSheetConditionalFormattingDialogsRS29;cxTreeListRS29;FMXTee;soaprtl;dxDBXServerModeRS29;dxPSdxChartControlLnkRS29;$(DCC_UsePackage)</DCC_UsePackage>
@@ -89,9 +95,11 @@
         <VerInfo_Keys>CompanyName=;FileDescription=$(MSBuildProjectName);FileVersion=1.0.0.0;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProgramID=com.embarcadero.$(MSBuildProjectName);ProductName=$(MSBuildProjectName);ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>
         <VerInfo_Locale>1033</VerInfo_Locale>
         <Manifest_File>$(BDS)\bin\default_app.manifest</Manifest_File>
+        <Defines>EUREKALOG;$(Defines)</Defines>
+        <DCC_Define>EUREKALOG;$(DCC_Define)</DCC_Define>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1)'!=''">
-        <DCC_Define>DEBUG;$(DCC_Define)</DCC_Define>
+        <DCC_Define>DEBUG;DEBUG_EL_CODE;$(DCC_Define)</DCC_Define>
         <DCC_DebugDCUs>true</DCC_DebugDCUs>
         <DCC_Optimize>false</DCC_Optimize>
         <DCC_GenerateStackFrames>true</DCC_GenerateStackFrames>
@@ -99,6 +107,7 @@
         <DCC_RemoteDebug>true</DCC_RemoteDebug>
         <DCC_IntegerOverflowCheck>true</DCC_IntegerOverflowCheck>
         <DCC_RangeChecking>true</DCC_RangeChecking>
+        <Defines>DEBUG_EL_CODE;$(Defines)</Defines>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1_Win32)'!=''">
         <DCC_RemoteDebug>false</DCC_RemoteDebug>
@@ -132,27 +141,22 @@
         </DelphiCompile>
         <DCCReference Include="UMain.pas">
             <Form>frmMain</Form>
-            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="..\DDTPallets2\UGestGoContainer.pas">
             <Form>GestGoContainer</Form>
-            <FormType>dfm</FormType>
             <DesignClass>TDataModule</DesignClass>
         </DCCReference>
         <DCCReference Include="..\DDTPallets2\UGestionaleParams.pas">
             <Form>dlgGoParams</Form>
-            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="..\DDTPallets2\UDDTInterface.pas"/>
         <DCCReference Include="UMagClasses.pas"/>
         <DCCReference Include="UGridFrame.pas">
             <Form>GridFrame</Form>
-            <FormType>dfm</FormType>
             <DesignClass>TFrame</DesignClass>
         </DCCReference>
         <DCCReference Include="UDbProductionContainer.pas">
             <Form>dbProductionContainer</Form>
-            <FormType>dfm</FormType>
             <DesignClass>TDataModule</DesignClass>
         </DCCReference>
         <DCCReference Include="UProductionClasses.pas"/>
